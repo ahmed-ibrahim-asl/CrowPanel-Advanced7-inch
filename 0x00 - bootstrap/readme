@@ -148,7 +148,9 @@ Version **1.4.0** is used because:
 - Must match display resolution and RAM constraints
 
 
-
+> **Note:** In LovyanGFX_Driver header file 
+    The `cfg.freq_write` this parameter controls how fast data is sent to the screen when updating pixels, drawing graphics, or refreshing the display. After a lot of testing it was a bit stable with this rate you can test for yourself 
+    `cfg.freq_write = 16000000;`
 
 ---
 ## Next Steps
