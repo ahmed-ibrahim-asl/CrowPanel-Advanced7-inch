@@ -1,0 +1,158 @@
+# Phase 0: Workspace Setup
+
+Before writing any code, this phase focuses on preparing a **stable and comfortable development environment**.
+
+You can choose **one of two paths**, depending on how deep you want to go:
+
+| Choice | Description |
+|:------:|-------------|
+| 🔵 **Blue Pill** | **Fast onboarding**<br>Ideal for beginners who want to start coding immediately |
+| 🔴 **Red Pill** | **Deep understanding**<br>Best for learners who want full control and insight |
+
+
+<p align="center" style="padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+  <img
+    src="image.png"
+    alt="Workspace setup overview"
+    width="600"
+  >
+</p>
+
+
+---
+
+
+## 🔵 Blue Pill — *Just Get Me Started*
+
+If your goal is to **start coding as quickly as possible**, this is the recommended path.
+
+### Why we using platform IO for Blue Pill path !?
+
+- Initial setup with the **Arduino IDE** was unreliable
+- Using AI tools (e.g. Copilot) inside Arduino IDE felt limiting
+
+Thats why we used **PlatformIO** instead of **Arduino-IDE**.
+
+
+
+### ✅ Quick Start Checklist
+
+- [ ] Install **Visual Studio Code**
+- [ ] Install the **PlatformIO** extension
+- [ ] Install squareLine Studio 1.4.0
+- [ ] Open the provided **template project**
+- [ ] Start developing immediately
+
+
+
+---
+
+## 🔴 Red Pill — *Walk Me Through Every Detail*
+
+Choose this path if you want a deep understanding of the development environment.
+We will eventually use the Blue Pill folder for a faster workflow, but the goal here is to fully understand the environment first.
+
+### What this path covers
+
+- Will explain the why and the what behind each part of the setup.
+- We will focus into breaking and understanding more than just get it done.
+
+
+---
+## ❓ Questions
+
+### 1. What is LVGL?
+**LVGL** (short for **Light and Versatile Graphics Library**) is an **open-source UI framework** used to build **graphical user interfaces on embedded systems**.
+
+
+### 2. What is SquareLine Studio?
+**SquareLine Studio** is a **UI design tool** that generates **LVGL-compatible code**.  
+It does not replace LVGL, it works on top of it.
+
+
+### 3. Why install SquareLine Studio version 1.4.0?
+Any SquareLine Studio version that can export **LVGL 8.3.x** is technically valid.
+
+Version **1.4.0** is used because:
+- It matches the **LVGL version used in Elecrow examples**
+- It avoids version mismatch confusion during setup
+
+
+> **Note:** Next Section is Break Down for Library folder.
+
+### 4. What is the Adafruit BusIO library responsible for?
+**Adafruit BusIO** is a low-level helper library that simplifies I2C and SPI register access for **Adafruit hardware drivers**.
+
+- It does not control hardware by itself
+- It is only a dependency for other Adafruit libraries
+- It is not used by LVGL or LovyanGFX
+
+
+### 5. What is the Adafruit GFX Library responsible for?
+**Adafruit GFX** provides basic 2D drawing primitives (text, lines, shapes) for Adafruit display drivers.
+
+- Used by Adafruit OLED/TFT libraries
+- Not used by LVGL
+- Not used by LovyanGFX
+
+
+### 6. What is the I2C_BM8563_RTC library responsible for?
+**I2C_BM8563_RTC** is a driver for the **BM8563 real-time clock (RTC)** chip.
+
+- Handles date and time keeping
+- Communicates over I2C
+- Independent from display and UI logic
+
+
+### 7. What is the LovyanGFX library responsible for?
+**LovyanGFX** is the display driver layer that communicates directly with the **RGB LCD hardware**.
+
+- Configures RGB timings
+- Manages frame buffers and DMA
+- Controls backlight PWM or enable pins
+
+
+
+### 8. What is the LVGL library responsible for?
+**LVGL** is the UI framework responsible for:
+
+- Widgets (buttons, labels, sliders)
+- Layouts and styles
+- Touch events and screen logic
+
+
+
+### 9. What is the TAMC_GT911 library responsible for?
+**TAMC_GT911** is the touch controller driver for the **GT911 capacitive touch IC**.
+
+- Reads touch coordinates over I2C
+- Detects press/release and multi-touch
+- Supplies data to LVGL input callbacks
+
+
+
+### 10. What is the TCA9534 library responsible for?
+**TCA9534** is a driver for an **I2C GPIO expander**.
+
+- Often used to control:
+  - LCD backlight enable
+  - Power or reset lines
+- Required only if your board routes these signals through the expander
+
+
+### 11. What is `lv_conf` responsible for?
+`lv_conf` is the LVGL configuration file.
+
+- Enables or disables LVGL features
+- Sets memory limits and color depth
+- Must match display resolution and RAM constraints
+
+
+
+
+---
+## Next Steps
+
+Once your workspace is ready, continue to the next phase of the project.
+
+> Happy hacking 😀
